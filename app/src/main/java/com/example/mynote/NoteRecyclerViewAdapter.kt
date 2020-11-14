@@ -32,7 +32,7 @@ class NoteRecyclerViewAdapter(private val context: Context, private val listener
     }
 
     override fun getItemCount(): Int {
-        allNotes.size
+        return allNotes.size
     }
 }
 interface INoteRVAdapter{
