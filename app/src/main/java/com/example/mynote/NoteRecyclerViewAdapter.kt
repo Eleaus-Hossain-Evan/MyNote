@@ -34,6 +34,12 @@ class NoteRecyclerViewAdapter(private val context: Context, private val listener
     override fun getItemCount(): Int {
         return allNotes.size
     }
+    fun updateList(newList: List<Note>){
+        allNotes.clear()
+        allNotes.addAll(newList)
+
+        notifyDataSetChanged()
+    }
 }
 interface INoteRVAdapter{
     fun onItemClicked(note: Note)

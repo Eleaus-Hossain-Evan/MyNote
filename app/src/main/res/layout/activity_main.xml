@@ -26,9 +26,11 @@
         app:layout_constraintTop_toBottomOf="@+id/etInput"
         android:layout_margin="16dp"
         android:backgroundTint="#43A047"
-        android:textColor="@color/white"/>
+        android:textColor="@color/white"
+        android:onClick="addNote"/>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
