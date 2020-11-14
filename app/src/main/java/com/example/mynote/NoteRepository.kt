@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 
 class NoteRepository(val noteDao: NoteDao) {
 
-    val getNotes: LiveData<List<Note>> = noteDao.getAllNords()
+    val allNotes: LiveData<List<Note>> = noteDao.getAllNotes()
 
     suspend fun deleteALl(){
         noteDao.deleteAll()

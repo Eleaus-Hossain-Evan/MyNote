@@ -16,5 +16,5 @@ interface NoteDao {
     suspend fun deleteAll()
 
     @Query("SELECT * FROM notes_table ORDER BY text ASC")
-    fun getAllNords(): LiveData<List<Note>>
+    fun getAllNotes(): LiveData<List<Note>>
 }
