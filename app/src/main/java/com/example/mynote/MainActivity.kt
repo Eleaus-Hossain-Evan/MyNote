@@ -2,6 +2,7 @@ package com.example.mynote
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 
 class MainActivity : AppCompatActivity() {
@@ -10,9 +11,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        viewModel = ViewModelProvider(this,ViewModelProvider.AndroidViewModelFactory.getInstance(this))
+        viewModel = ViewModelProvider(this,ViewModelProvider.AndroidViewModelFactory.getInstance(application))
             .get(NoteViewModel::class.java)
 
-
+        viewModel.allNotes.observe(this, Observer {
+            
+        })
     }
 }
