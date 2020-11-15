@@ -40,6 +40,9 @@ class MainActivity : AppCompatActivity(), INoteRVAdapter {
             }
             etInput.text.clear()
         })
+        btnClearAll.setOnClickListener(View.OnClickListener {
+            viewModel.deleteAllNotes()
+        })
     }
 
     override fun onItemClicked(note: Note) {
