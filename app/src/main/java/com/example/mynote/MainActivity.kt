@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.view.*
 
 class MainActivity : AppCompatActivity(), INoteRVAdapter {
     lateinit var viewModel: NoteViewModel
@@ -28,6 +29,17 @@ class MainActivity : AppCompatActivity(), INoteRVAdapter {
                 adapter.updateList(it)
             }
         })
+        btnSubmit.setOnClickListener(View.OnClickListener {
+            val noteText = etInput.text.toString()
+            if(noteText.isNotEmpty()){
+                viewModel.insertNote(Note(noteText))
+                Toast.makeText(this, "$noteText Inserted", Toast.LENGTH_LONG).show()
+            }
+            else{
+                Toast.makeText(this, "nothing to Insert ", Toast.LENGTH_LONG).show()
+            }
+            etInput.text.clear()
+        })
     }
 
     override fun onItemClicked(note: Note) {
@@ -35,12 +47,14 @@ class MainActivity : AppCompatActivity(), INoteRVAdapter {
         Toast.makeText(this, "${note.text} Deleted", Toast.LENGTH_LONG).show()
     }
 
-    fun addNote(view: View) {
-        val noteText = etInput.text.toString().trim()
-        if(noteText.isNotEmpty()){
-            viewModel.insertNote(Note(noteText))
-            Toast.makeText(this, "$noteText Inserted", Toast.LENGTH_LONG).show()
-        }
-        else Toast.makeText(this, "nothing to Insert ", Toast.LENGTH_LONG).show()
-    }
+//    fun addNote(view: View) {
+//        val noteText = view.etInput.text.toString().trim()
+//        if(noteText.isNotEmpty()){
+//            viewModel.insertNote(Note(noteText))
+//            Toast.makeText(this, "$noteText Inserted", Toast.LENGTH_LONG).show()
+//        }
+//        else{
+//            Toast.makeText(this, "nothing to Insert ", Toast.LENGTH_LONG).show()
+//        }
+//    }
 }
